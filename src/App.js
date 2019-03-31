@@ -1,41 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Link } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import Login from "./components/login/Login";
+import Main from "./components/main/Main";
 
 class App extends Component {
-
-  isAuthorized() {
-    return false;
-  }
-  render() {
-    let mainMenu = this.isAuthorized()?
-        <div className="menu">
-          <ul>
-            <li> <Link to="/">Home</Link> </li>
-            <li> <Link to="/messages">Messages</Link> </li>
-            <li> <Link to="/about">About</Link> </li>
-          </ul>
-        </div> : '';
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and do not save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        {mainMenu}
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+          authorized: false
+        };
+    }
+    render() {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <Route exact path="/" component={Main}/>
+                    <Route path="/login" component={Login}/>
+                </BrowserRouter>
+            </div>
+        )
+    }
 }
 export default App;
