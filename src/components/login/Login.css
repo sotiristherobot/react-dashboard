@@ -1,0 +1,14 @@
+.login-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    border: 1px solid aquamarine;
+    width: 350px;
+    height: 200px;
+}
+.login-form .login-form-item {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+}

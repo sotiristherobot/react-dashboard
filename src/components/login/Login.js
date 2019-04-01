@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import './Login.css';
 
 class Login extends Component {
     render() {
         return (
-            <form>
-                <label>
+            <form className="login-form">
+                <label className="login-form-item">
                     Username:
                     <input type="text" name="username"/>
                 </label>
-                <label>
+                <label className="login-form-item">
                     Password:
                     <input type="password" name="password"/>
                 </label>
