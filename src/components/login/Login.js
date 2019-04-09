@@ -43,10 +43,19 @@ class Login extends Component {
         this.submitButtonHandler = this.submitButtonHandler.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
     }
+    /**
+     * Click handler for the submit button. Stops propagation and prevents default form behavior.
+     * Will be used to submit form to backend
+     * @param e -- object
+     */
     submitButtonHandler(e) {
         e.stopPropagation();
         e.preventDefault();
     }
+    /**
+     * Change handler for textfields. Sets the values to state
+     * @param e -- {object}
+     */
     changeHandler(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -80,6 +89,7 @@ class Login extends Component {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={this.submitButtonHandler}
                         >
                             Sign in
                         </Button>
