@@ -1,6 +1,6 @@
 class Security {
     static isAuthorized() {
-        return true;
+        return false;
     }
 }
 export default Security;

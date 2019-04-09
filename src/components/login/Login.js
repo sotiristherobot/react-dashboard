@@ -9,11 +9,11 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         flexFlow: 'column',
-        marginTop: theme.spacing.unit * 8,
+        marginTop: theme.spacing.unit * 16,
         width: 'auto',
         [theme.breakpoints.up('sm')]: {
             width: 400,
-            minHeight: 200,
+            minHeight: 250,
             marginLeft: 'auto',
             marginRight: 'auto',
         },
@@ -23,10 +23,12 @@ const styles = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 2,
         width: '100%'
     },
     submit: {
-        marginTop: theme.spacing.unit * 3
+        marginTop: theme.spacing.unit * 7,
+        maxWidth: '70%'
     }
 });
 
