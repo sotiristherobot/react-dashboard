@@ -1,5 +1,33 @@
 import React, { Component } from 'react';
-import './Login.css';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexFlow: 'column',
+        marginTop: theme.spacing.unit * 8,
+        width: 'auto',
+        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+            width: 400,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+        },
+        alignItems: 'center',
+        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: '100%'
+    },
+    submit: {
+        marginTop: theme.spacing.unit * 3
+    }
+});
 
 class Login extends Component {
     constructor(props) {
@@ -22,17 +50,41 @@ class Login extends Component {
         });
     }
     render() {
+        const {classes} = this.props;
         return (
-            <form method="POST" className="login-form" onSubmit={this.submitButtonHandler}>
-                <label className="login-form-item">
-                    Username: <input type="text" name="username" onChange={this.changeHandler}/>
-                </label>
-                <label className="login-form-item">
-                    Password: <input type="password" name="password" onChange={this.changeHandler}/>
-                </label>
-                <input className="login-form-item" type="submit" value="Submit" />
-            </form>
+            <div>
+                <Paper className={classes.formWrapper} elevation={1}>
+                    <form className={classes.container} noValidate autoComplete="off">
+                        <TextField
+                            name="username"
+                            label="UserName"
+                            type="text"
+                            className={classes.textField}
+                            onChange={this.changeHandler}
+                            margin="normal"
+                        />
+                        <TextField
+                            name="password"
+                            label="Password"
+                            type="password"
+                            className={classes.textField}
+                            onChange={this.changeHandler}
+                            margin="normal"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Sign in
+                        </Button>
+                    </form>
+                </Paper>
+            </div>
+
         );
     }
 }
-export default Login;
+export default withStyles(styles)(Login);
