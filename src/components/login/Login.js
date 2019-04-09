@@ -11,8 +11,9 @@ const styles = theme => ({
         flexFlow: 'column',
         marginTop: theme.spacing.unit * 8,
         width: 'auto',
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+        [theme.breakpoints.up('sm')]: {
             width: 400,
+            minHeight: 200,
             marginLeft: 'auto',
             marginRight: 'auto',
         },
@@ -53,7 +54,7 @@ class Login extends Component {
         const {classes} = this.props;
         return (
             <div>
-                <Paper className={classes.formWrapper} elevation={1}>
+                <Paper className={classes.formWrapper} elevation={5}>
                     <form className={classes.container} noValidate autoComplete="off">
                         <TextField
                             name="username"
@@ -83,7 +84,6 @@ class Login extends Component {
                     </form>
                 </Paper>
             </div>
-
         );
     }
 }
