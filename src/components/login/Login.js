@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Security from '../../helpers/Security';
 
 const styles = theme => ({
   container: {
@@ -44,6 +45,17 @@ class Login extends Component {
     this.submitButtonHandler = this.submitButtonHandler.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
   }
+
+  /**
+   * Component cycle event.
+   * 1. If we are already authorized, then redirect user to main
+  */
+  componentWillMount() {
+    if (Security.isAuthorized()) {
+      this.props.history.replace('/');
+    }
+  }
+
   /**
    * Click handler for the submit button. Stops propagation and prevents default form behavior.
    * Will be used to submit form to backend
