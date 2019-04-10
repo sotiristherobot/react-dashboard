@@ -8,8 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const styles = {
-  root: {
-    flexGrow: 1
+  appBarWrapper: {
+    display: 'flex',
+    flexGrow: 1,
+    height: '63px'
   },
   grow: {
     flexGrow: 1
@@ -27,19 +29,19 @@ class Main extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="root">
-        {
-            !Security.isAuthorized() ? <Redirect to={'/login'} /> :
-              <AppBar position="static">
-                  <Toolbar>
-                      <Typography variant="h6" color="inherit" className={classes.grow}>
-                          Welcome
-                      </Typography>
-                      <Button color="inherit">Login</Button>
-                  </Toolbar>
-              </AppBar>
-
-        }
+      <div className={classes.appBarWrapper}>
+        {!Security.isAuthorized() ? (
+          <Redirect to={'/login'} />
+        ) : (
+          <AppBar position="static" className="grow">
+            <Toolbar>
+              <Typography variant="h6" color="inherit" className={classes.grow}>
+                Welcome
+              </Typography>
+              <Button color="inherit">Login</Button>
+            </Toolbar>
+          </AppBar>
+        )}
       </div>
     );
   }
