@@ -40,7 +40,11 @@ class Login extends Component {
     //TODO Moved state up to a higher component.
     this.state = {
       username: null,
-      password: null
+      password: null,
+      errors: {
+        username: false,
+        password: false
+      }
     };
     this.submitButtonHandler = this.submitButtonHandler.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
@@ -65,6 +69,7 @@ class Login extends Component {
     e.stopPropagation();
     e.preventDefault();
   }
+
   /**
    * Change handler for textfields. Sets the values to state
    * @param e -- {object}
@@ -81,14 +86,16 @@ class Login extends Component {
         <Paper className={classes.formWrapper} elevation={5}>
           <form className={classes.container} noValidate autoComplete="off">
             <TextField
+              error={this.state.errors.username}
               name="username"
               label="UserName"
-              type="text"
+              type="email"
               className={classes.textField}
               onChange={this.changeHandler}
               margin="normal"
             />
             <TextField
+              error={this.state.errors.password}
               name="password"
               label="Password"
               type="password"
