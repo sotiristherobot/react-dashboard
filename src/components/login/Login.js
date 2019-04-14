@@ -53,7 +53,7 @@ class Login extends Component {
   /**
    * Component cycle event.
    * 1. If we are already authorized, then redirect user to main
-  */
+   */
   componentWillMount() {
     if (Security.isAuthorized()) {
       this.props.history.replace('/');
@@ -76,7 +76,11 @@ class Login extends Component {
    */
   changeHandler(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: {
+        ...this.state.errors,
+        [e.target.name]: !e.target.reportValidity()
+      }
     });
   }
   render() {
@@ -84,7 +88,7 @@ class Login extends Component {
     return (
       <div>
         <Paper className={classes.formWrapper} elevation={5}>
-          <form className={classes.container} noValidate autoComplete="off">
+          <form className={classes.container} autoComplete="off">
             <TextField
               error={this.state.errors.username}
               name="username"
@@ -93,6 +97,7 @@ class Login extends Component {
               className={classes.textField}
               onChange={this.changeHandler}
               margin="normal"
+              required
             />
             <TextField
               error={this.state.errors.password}
@@ -102,6 +107,7 @@ class Login extends Component {
               className={classes.textField}
               onChange={this.changeHandler}
               margin="normal"
+              required
             />
             <Button
               type="submit"
