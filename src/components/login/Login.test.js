@@ -33,8 +33,8 @@ describe('<Login/>', () => {
     const username = wrapper.find('input[name="username"]');
     const password = wrapper.find('input[name="password"]');
 
-    username.simulate('change', {target:{ name: 'username', value: 'sotiris'}});
-    password.simulate('change', {target:{ name: 'password', value: 'password'}});
+    username.simulate('change', {target:{ name: 'username', value: 'sotiris', reportValidity: () => true}});
+    password.simulate('change', {target:{ name: 'password', value: 'password', reportValidity: () => true}});
     expect(wrapper.find('Login').instance().state.username).toEqual('sotiris');
     expect(wrapper.find('Login').instance().state.password).toEqual('password');
   });
