@@ -38,5 +38,18 @@ describe('<Login/>', () => {
     expect(wrapper.find('Login').instance().state.username).toEqual('sotiris');
     expect(wrapper.find('Login').instance().state.password).toEqual('password');
   });
+  it('should validate', () => {
+    const wrapper = mount(<Login />);
+    const username = wrapper.find('input[name="username"]');
+    const password = wrapper.find('input[name="password"]');
+
+    expect(username.getDOMNode().checkValidity()).toEqual(false);
+    expect(password.getDOMNode().checkValidity()).toEqual(false);
+    username.getDOMNode().value = 'username@example.com';
+    password.getDOMNode().value = 'password';
+
+    expect(username.getDOMNode().checkValidity()).toEqual(true);
+    expect(password.getDOMNode().checkValidity()).toEqual(true);
+  })
 });
 
