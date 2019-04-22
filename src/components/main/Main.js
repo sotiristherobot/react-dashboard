@@ -13,12 +13,12 @@ const styles = {
     flexGrow: 1,
     height: '63px'
   },
-  grow: {
-    flexGrow: 1
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+  },
+  toolbar: {
+    justifyContent: 'space-around'
   }
 };
 
@@ -33,9 +33,9 @@ class Main extends Component {
         {!Security.isAuthorized() ? (
           <Redirect to={'/login'} />
         ) : (
-          <AppBar position="static" className="grow">
-            <Toolbar>
-              <Typography variant="h6" color="inherit" className={classes.grow}>
+          <AppBar position="static">
+            <Toolbar className={classes.toolbar}>
+              <Typography variant="h6" color="inherit">
                 Welcome
               </Typography>
               <Button color="inherit">Login</Button>
