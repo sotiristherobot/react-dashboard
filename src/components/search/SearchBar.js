@@ -11,7 +11,10 @@ const styles = {
       flexGrow: 1,
       maxWidth: 1024,
       justifyContent: 'space-between'
-  }
+  },
+    searchBox: {
+      flexGrow: 1
+    }
 };
 
 class SearchBar extends Component {
@@ -22,7 +25,7 @@ class SearchBar extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root} elevation={1}>
-        <InputBase placeholder="Search Anything..."/>
+        <InputBase className={classes.searchBox} placeholder="Search Anything..."/>
           <IconButton aria-label="Search">
               <SearchIcon />
           </IconButton>
