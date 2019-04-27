@@ -9,7 +9,7 @@ const styles = {
       padding: '10px',
       margin: '10px',
       flexGrow: 1,
-      maxWidth: 500,
+      maxWidth: 1024,
       justifyContent: 'space-between'
   }
 };
