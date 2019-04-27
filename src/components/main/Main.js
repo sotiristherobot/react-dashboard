@@ -13,9 +13,7 @@ const styles = {
   root: {
     flexGrow: 1
   },
-
   appBarWrapper: {
-    display: 'flex',
     flexGrow: 1,
     height: '63px'
   },
