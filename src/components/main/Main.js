@@ -23,6 +23,11 @@ const styles = {
   },
   toolbar: {
     justifyContent: 'space-around'
+  },
+  gridSearchRow: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   }
 };
 
@@ -48,8 +53,8 @@ class Main extends Component {
                 </Toolbar>
               </AppBar>
             </Grid>
-            <Grid item xs={12}>
-              <SearchBar />
+            <Grid item xs={12} className={classes.gridSearchRow}>
+              <SearchBar/>
             </Grid>
           </Grid>
         )}
