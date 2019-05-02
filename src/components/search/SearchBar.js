@@ -26,7 +26,6 @@ class SearchBar extends Component {
     return (
       <Paper className={classes.root} elevation={1}>
         <InputBase className={classes.searchBox} placeholder="Search Anything..." onChange={this.props.searchQueryHandler}/>
-        //TODO add click handler for search button
           <IconButton aria-label="Search">
               <SearchIcon />
           </IconButton>
