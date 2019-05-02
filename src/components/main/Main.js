@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import SearchBar from '../search/SearchBar';
+import axios from 'axios';
 
 const styles = {
   root: {
@@ -36,9 +37,12 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      searchQueryValue: ''
+      searchQueryValue: '',
+      //TODO convert this to array of object images
+      images: ''
     };
     this.searchQueryHandler = this.searchQueryHandler.bind(this);
+    this.fetchImages = this.fetchImages.bind(this);
   }
 
   /**
@@ -48,6 +52,23 @@ class Main extends Component {
   searchQueryHandler(e) {
     this.setState({
       searchQueryValue: e.target.value
+    });
+  }
+
+  /**
+   * Fetch artifacts from API
+   * @returns {AxiosPromise<any>}
+  */
+  fetchImages() {
+    return axios.get('https://be26ac49-7bfe-4455-bf43-c6c0ef539c97.mock.pstmn.io/artifacts')
+  }
+
+  /**
+   * On componentDidMount fetch the images and update state.
+  */
+  componentDidMount() {
+    this.fetchImages().then( res => {
+      this.setState({...this.state, images: res.data.data[0].imgUrl }) //TODO simplify this add multiple images
     });
   }
   render() {
@@ -70,6 +91,9 @@ class Main extends Component {
             </Grid>
             <Grid item xs={12} className={classes.gridSearchRow}>
               <SearchBar searchQueryHandler={this.searchQueryHandler} />
+            </Grid>
+            <Grid item xs={12} className={classes.gridSearchRow}>
+              <img src={this.state.images && this.state.images}/>
             </Grid>
           </Grid>
         )}
