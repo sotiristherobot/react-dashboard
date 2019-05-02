@@ -25,7 +25,7 @@ class SearchBar extends Component {
     const { classes } = this.props;
     return (
       <Paper className={classes.root} elevation={1}>
-        <InputBase className={classes.searchBox} placeholder="Search Anything..."/>
+        <InputBase className={classes.searchBox} placeholder="Search Anything..." onChange={this.props.searchQueryHandler}/>
           <IconButton aria-label="Search">
               <SearchIcon />
           </IconButton>

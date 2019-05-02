@@ -34,6 +34,21 @@ const styles = {
 class Main extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchQueryValue: ''
+    };
+    this.searchQueryHandler = this.searchQueryHandler.bind(this);
+  }
+
+  /**
+   * Handles the onChange event of child <SearchBar/> component. Sets the value to local state
+   * @param {object} e
+   */
+  searchQueryHandler(e) {
+    this.setState({
+      searchQueryValue: e.target.value
+    });
   }
   render() {
     const { classes } = this.props;
@@ -54,7 +69,7 @@ class Main extends Component {
               </AppBar>
             </Grid>
             <Grid item xs={12} className={classes.gridSearchRow}>
-              <SearchBar/>
+              <SearchBar searchQueryHandler={this.searchQueryHandler} />
             </Grid>
           </Grid>
         )}
